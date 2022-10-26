@@ -1,0 +1,35 @@
+import Process from "sys/process"
+import Result from "result"
+import Array from "array"
+import List from "list"
+import String from "string"
+
+let rec permutations = (a, n) => {
+    if (n == 0) {
+        print(Array.join(" ", a))
+    }
+    else {
+        for(let mut i = 0; i < n; i += 1) {
+            permutations(a, n-1)
+            let j = i
+            if (n % 2 == 0) {
+                let j = 0
+            }
+            let temp = a[n]
+            a[n] = a[j]
+            a[j] = temp
+        }
+        permutations(a, n - 1)  
+    }
+}
+
+
+let arr = Result.unwrap(Process.argv())
+let length = Array.length(arr)
+let split = Array.slice(3, length, arr)
+if ((length - 3) <= 0) {
+    print("Must input at least 1 argument")
+    Result.unwrap(Process.exit(1))
+}
+let word = Array.join("", split)
+permutations(split, String.length(word) - 1)

@@ -1,0 +1,14 @@
+import String from "string"
+
+for (let mut a = 1; a < 41; a+=1) {
+    for (let mut b = 1; b < 41; b+=1) {
+        for (let mut c = 1; c < 41; c+=1) {
+            if (a * a + b * b == c * c) {
+                print("Output:")
+                print(a)
+                print(b)
+                print(c)
+            }
+        }
+    }    
+}
